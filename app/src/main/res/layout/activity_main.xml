@@ -46,7 +46,8 @@
         <TextView
             android:id="@+id/txtv_Results"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

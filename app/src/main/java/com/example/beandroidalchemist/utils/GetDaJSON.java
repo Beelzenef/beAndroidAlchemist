@@ -1,21 +1,17 @@
 package com.example.beandroidalchemist.utils;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.example.beandroidalchemist.R;
+import com.example.beandroidalchemist.pojo.TiposPociones;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
- * Created by Beelzenef on 10/03/2018.
+ * JSON getter
  */
 
 public class GetDaJSON {
@@ -26,120 +22,41 @@ public class GetDaJSON {
         this.c = c;
     }
 
-    public ArrayList<String> getOyS() {
+    public TiposPociones getParamsPociones(JSONObject contenido) throws JSONException {
+
+        TiposPociones params = new TiposPociones();
 
         ArrayList<String> listaOyS = new ArrayList<>();
-
-        InputStream is = c.getResources().openRawResource(R.raw.olorsabor);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int controlEOF;
-        try {
-            controlEOF = is.read();
-            while (controlEOF != -1) {
-                baos.write(controlEOF);
-                controlEOF = is.read();
-            }
-            is.close();
-
-            JSONObject jObject = new JSONObject(baos.toString());
-            JSONArray listaJSON = jObject.getJSONArray("olorsabor");
-
-            for (int i = 0; i < listaJSON.length(); i++) {
-                listaOyS.add(listaJSON.getString(i));
-            }
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
-
-        return listaOyS;
-    }
-
-    public ArrayList<String> getEfectosN() {
-
+        ArrayList<String> listaEtiquetas = new ArrayList<>();
         ArrayList<String> listaEfectosN = new ArrayList<>();
-
-        InputStream is = c.getResources().openRawResource(R.raw.efectosn);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int controlEOF;
-        try {
-            controlEOF = is.read();
-            while (controlEOF != -1) {
-                baos.write(controlEOF);
-                controlEOF = is.read();
-            }
-            is.close();
-
-            JSONObject jObject = new JSONObject(baos.toString());
-            JSONArray listaJSON = jObject.getJSONArray("efectosn");
-
-            for (int i = 0; i < listaJSON.length(); i++) {
-                listaEfectosN.add(listaJSON.getString(i));
-            }
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
-
-        return listaEfectosN;
-    }
-
-    public ArrayList<String> getEfectosP() {
-
         ArrayList<String> listaEfectosP = new ArrayList<>();
 
-        InputStream is = c.getResources().openRawResource(R.raw.efectosp);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        JSONArray oys = new JSONArray(contenido.getString("olorsabor"));
+        JSONArray efectosn = new JSONArray(contenido.getString("efectosn"));
+        JSONArray efectosp = new JSONArray(contenido.getString("efectosp"));
+        JSONArray etiquetas = new JSONArray(contenido.getString("etiqueta"));
 
-        int controlEOF;
-        try {
-            controlEOF = is.read();
-            while (controlEOF != -1) {
-                baos.write(controlEOF);
-                controlEOF = is.read();
-            }
-            is.close();
-
-            JSONObject jObject = new JSONObject(baos.toString());
-            JSONArray listaJSON = jObject.getJSONArray("efectosp");
-
-            for (int i = 0; i < listaJSON.length(); i++) {
-                listaEfectosP.add(listaJSON.getString(i));
-            }
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
+        for (int i = 0; i < oys.length(); i++) {
+            listaOyS.add(oys.getString(i));
         }
+        params.setoYs(listaOyS);
 
-        return listaEfectosP;
-    }
-
-    public ArrayList<String> getEtiqueta() {
-
-        ArrayList<String> listaEtiquetas = new ArrayList<>();
-
-        InputStream is = c.getResources().openRawResource(R.raw.etiquetas);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        int controlEOF;
-        try {
-            controlEOF = is.read();
-            while (controlEOF != -1) {
-                baos.write(controlEOF);
-                controlEOF = is.read();
-            }
-            is.close();
-
-            JSONObject jObject = new JSONObject(baos.toString());
-            JSONArray listaJSON = jObject.getJSONArray("etiquetas");
-
-            for (int i = 0; i < listaJSON.length(); i++) {
-                listaEtiquetas.add(listaJSON.getString(i));
-            }
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
+        for (int i = 0; i < efectosn.length(); i++) {
+            listaEfectosN.add(efectosn.getString(i));
         }
+        params.setEfectosN(listaEfectosN);
 
-        return listaEtiquetas;
+        for (int i = 0; i < efectosp.length(); i++) {
+            listaEfectosP.add(efectosp.getString(i));
+        }
+        params.setEfectosP(listaEfectosP);
+
+        for (int i = 0; i < etiquetas.length(); i++) {
+            listaEtiquetas.add(etiquetas.getString(i));
+        }
+        params.setEtiquetas(listaEtiquetas);
+
+        return params;
     }
 
 }

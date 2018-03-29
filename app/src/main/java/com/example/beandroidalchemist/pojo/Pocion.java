@@ -1,7 +1,7 @@
 package com.example.beandroidalchemist.pojo;
 
 /**
- * Created by Beelzenef on 10/03/2018.
+ * Potion POJO
  */
 
 public class Pocion {
@@ -63,8 +63,8 @@ public class Pocion {
     }
 
     public Pocion(String olor, String sabor, String etiqueta, String efectoNegativo, String efectoPositivo) {
-        this.olor = this.olor;
-        this.sabor = this.sabor;
+        this.olor = olor;
+        this.sabor = sabor;
         this.etiqueta = etiqueta;
         this.efectoNegativo = efectoNegativo;
         this.efectoPositivo = efectoPositivo;
@@ -72,7 +72,7 @@ public class Pocion {
 
     @Override
     public String toString() {
-        return "Huele a " + this.olor + " y sabe a " + this.sabor + ". Tiene una etiqueta: " + this.etiqueta +
-                ". Su efecto positivo es " + this.efectoPositivo + " y el negativo es " + this.efectoNegativo;
+        return "Su olor: " + this.olor + "\nSu sabor " + this.sabor + "\nTiene una etiqueta: " + this.etiqueta +
+                "\nSu efecto positivo es " + this.efectoPositivo + ".\nSu efecto negativo es " + this.efectoNegativo;
     }
 }
