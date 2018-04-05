@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">beAndroidAlchemist</string>
+
+    <string name="btn_genPotion">Generate potion</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="developers">Development</string>
+    <string name="aboutus">About us</string>
+    <string name="feedback">Feedback</string>
+    <string name="shareResult">Share</string>
+    <string name="alchemy">Make alchemy like a pro!</string>
+</resources>

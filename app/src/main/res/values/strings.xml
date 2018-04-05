@@ -2,4 +2,14 @@
     <string name="app_name">beAndroidAlchemist</string>
 
     <string name="btn_genPotion">Generar poción</string>
+
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
+
+    <string name="action_settings">Configuración</string>
+    <string name="developers">Desarrollo</string>
+    <string name="aboutus">Conócenos</string>
+    <string name="feedback">Feedback</string>
+    <string name="shareResult">Comparte</string>
+    <string name="alchemy">Haz alquimia sin parar</string>
 </resources>
